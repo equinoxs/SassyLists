@@ -1,0 +1,1 @@
+This is the test branch for SassyLists. Check the [main branch](https://github.com/Team-Sass/SassyLists) for stable version.

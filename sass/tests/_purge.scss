@@ -1,0 +1,22 @@
+@include describe("Purge") {
+    
+    @include it("should remove all falsy values from array") {
+        $list-1: 0  1 2 false 3 null 4 "";
+        $list-2: "a" "b" false "c" null "d" "";
+
+        @include should(expect( purge( $list-1 )), to( equal( (0 1 2 3 4) )));
+        @include should(expect( purge( $list-2 )), to( equal( ("a" "b" "c" "d") )));
+    }
+
+    @include it("should leave arrays without falsy values alone") {
+        $list: 1 2 3 4;
+
+        @include should(expect( purge($list) ), to( equal( $list )));
+    }
+
+    @include it("should leave empty arrays alone") {
+        $list: ();
+
+        @include should(expect( purge($list) ), to( equal( $list )));
+    }
+}

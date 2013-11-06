@@ -1,0 +1,30 @@
+@import "bootcamp/dist/bootcamp";
+@import "SassyLists";
+
+@include runner-start;
+@import "tests/chunk";
+@import "tests/contain";
+@import "tests/count-values";
+@import "tests/debug";
+@import "tests/first";
+@import "tests/flatten";
+@import "tests/insert-nth";
+@import "tests/is-symmetrical";
+@import "tests/last";
+@import "tests/last-index";
+@import "tests/loop";
+@import "tests/prepend";
+@import "tests/purge";
+@import "tests/random-value";
+@import "tests/remove";
+@import "tests/remove-duplicates";
+@import "tests/remove-nth";
+@import "tests/replace";
+@import "tests/replace-nth";
+@import "tests/reverse";
+@import "tests/slice";
+@import "tests/sort";
+@import "tests/sum";
+@import "tests/to-string";
+@include runner-end;
+ 		

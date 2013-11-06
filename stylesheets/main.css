@@ -1,0 +1,32 @@
+@charset "CP850";
+/* >> Bootcamp >> */
+/* line 7, ../sass/bootcamp/dist/core/mixins/_it.scss */
+Chunk should explode list into several lists {
+  ✗: Expected 1 2 3 4 5 "list" to equal 1 2 3 4 5 "list";
+  Test: Failed;
+}
+
+/* line 7, ../sass/bootcamp/dist/core/mixins/_it.scss */
+Chunk should return initial list if size is equal or greater than the length of list {
+  ✗: Expected 1 2 3 4 5 "list" to equal 1 2 3 4 5 "list";
+  ✗: Expected "a" "b" "c" "d" "e" "f" "list" to equal "a" "b" "c" "d" "e" "f" "list";
+  Test: Failed;
+}
+
+/* line 7, ../sass/bootcamp/dist/core/mixins/_it.scss */
+Sort should sort unitless numeric values in list {
+  ✗: Expected a "string" to be null "string";
+  Test: Failed;
+}
+
+/* line 11, ../sass/bootcamp/dist/core/mixins/_runner.scss */
+Test Results {
+  Passed: false;
+  Checklist:  ✗ ✗ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✗ ✔ ✔ ✔ ✔;
+  Tests: 55;
+  Assertions: 161;
+  Failures: 3;
+  Skipped: 0;
+}
+
+/* << Bootcamp << */

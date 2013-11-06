@@ -1,0 +1,9 @@
+@include describe("Insert-Nth") {
+
+	@include it("should insert value at index") {
+		$list-1: 1 2 3 4 5;
+		$list-2: "a" "b" "c" "d" "e" "f";
+	    
+	    @include should(expect( insert-nth($list-1, 2, "hey") ), to( equal( 1 "hey" 2 3 4 5 )));
+	}
+}

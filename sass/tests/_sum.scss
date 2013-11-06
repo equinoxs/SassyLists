@@ -1,0 +1,17 @@
+@include describe("Sum") {
+	$list-1: 1 2 3 4 5;
+	$list-2: 1px 2in 3pc 4% 5px 6;
+	$list-3: "a" "b" "c" "d" "e" "f";
+
+	@include it("should return the sum of unitless numbers in list") {
+	    @include should(expect( sum($list-1) ), to( equal( 15 )));
+	    @include should(expect( sum($list-2) ), to( equal( 6 )));
+	    @include should(expect( sum($list-3) ), to( equal( 0 )));
+	}
+
+	@include it("should return the sum of numbers included those with units when force flag is used") {
+	    @include should(expect( sum($list-1, true) ), to( equal( 15 )));
+	    @include should(expect( sum($list-2, true) ), to( equal( 21 )));
+	    @include should(expect( sum($list-3, true) ), to( equal( 0 )));
+	}
+}

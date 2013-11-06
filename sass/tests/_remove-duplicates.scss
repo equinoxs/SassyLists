@@ -1,0 +1,12 @@
+@include describe("Remove-Duplicates") {
+	$list-1: 1 2 3 2 4 1 5;
+	$list-2: "a" "b" "c" "d" "e" "f";
+
+	@include it("should remove duplicated values from list") {
+	    @include should(expect( remove-duplicates($list-1) ), to( equal( 1 2 3 4 5 )));
+	}
+
+	@include it("should leave a list without duplicated values alone") {
+	    @include should(expect( remove-duplicates($list-2) ), to( equal( "a" "b" "c" "d" "e" "f" )));
+	}
+}

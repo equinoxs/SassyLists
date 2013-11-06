@@ -1,0 +1,12 @@
+@include describe("Last-Index") {
+    
+    @include it("should return the index of last occurrence of item in a list") {
+        $numbers:  1 2 2 3;
+        $strings:  "baz" "foo" "bar" "baz";
+        $booleans: true false false;
+
+        @include should(expect( last-index($numbers, 2     ) ), to( equal( 3 )));
+        @include should(expect( last-index($strings, "baz" ) ), to( equal( 4 )));
+        @include should(expect( last-index($booleans, false) ), to( equal( 3 )));
+    }
+}

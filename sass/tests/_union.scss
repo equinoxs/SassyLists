@@ -1,0 +1,30 @@
+@include describe("Union") {
+    
+    @include it("should make a union of unique items in the arrays") {
+        $list-1a: 1 2 3;
+        $list-1b: 2 4 6;
+        $list-1c: 8 2 1;
+
+        $list-2a: "foo" "bar" "baz";
+        $list-2b: "bar" "nan" "baz";
+        $list-2c: "foo" "baz" "bar";
+
+        $list-3a: true false false;
+        $list-3b: true  null false;
+        $list-3c: null  null  true;
+
+        @include should(expect( union($list-1a, $list-1b, $list-1c) ), to( equal( ( 1 2 3 4 6 8  ) )));
+        @include should(expect( union($list-2a, $list-2b, $list-2c) ), to( equal( ( "foo" "bar" "baz" "nan" ) )));
+        @include should(expect( union($list-3a, $list-3b, $list-3c) ), to( equal( ( true false null ) )));
+    }
+
+    @include it("should return one item if all the items are the same") {
+        @include should(expect( union(1 1 1) ), to( equal( ( 1 ) )));
+        @include should(expect( union("foo" "foo" "foo") ), to( equal( ( "foo" ) )));
+        @include should(expect( union(false false false) ), to( equal( ( false ) )));
+    }
+
+    //  @include it("should leave an empty array alone") {
+    //    @include should(expect( union( () ) ), to( be-empty() ));
+    //  }
+}

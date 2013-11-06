@@ -1,0 +1,14 @@
+@include describe("To-String") {
+	$list-1: 1 2 3 4 5;
+	$list-2: "a" "b" "c" "d" "e" "f";
+
+	@include it("should return list as a string using glue") {
+	    @include should(expect( to-string($list-1, "-") ), to( equal( "1-2-3-4-5"   )));
+	    @include should(expect( to-string($list-2, "/") ), to( equal( "a/b/c/d/e/f" )));
+	}
+
+	@include it("should return list with no glue if omitted") {
+	    @include should(expect( to-string($list-1) ), to( equal( "12345"  )));
+	    @include should(expect( to-string($list-2) ), to( equal( "abcdef" )));
+	}
+}

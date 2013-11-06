@@ -1,0 +1,10 @@
+@include describe("Loop") {
+
+	@include it("should shift indexes from list") {
+		$list-1: 1 2 3 4 5;
+		$list-2: "a" "b" "c" "d" "e" "f";
+	    
+	    @include should(expect( loop($list-1   ) ), to( equal( 5 1 2 3 4 )));
+	    @include should(expect( loop($list-1, 2) ), to( equal( 4 5 1 2 3 )));
+	}
+}

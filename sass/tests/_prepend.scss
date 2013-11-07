@@ -1,22 +1,22 @@
 @include describe("Prepend") {
     
     @include it("should prepend a value to a list") {
-        $list-1: 2 3 4;
-        $list-2: false false true;
-        $list-3: "foo" "bar" "baz";
+        $numbers  : 2 3 4;
+        $strings  : "b" "c" "d";
+        $booleans : false false true;
 
-        @include should(expect( prepend( $list-1, 1     ) ), to( equal( (1 2 3 4)                 )));
-        //@include should(expect( prepend( $list-2, true  ) ), to( equal( (true, false, false, true)   )));
-        @include should(expect( prepend( $list-3, "tal" ) ), to( equal( ("tal" "foo" "bar" "baz") )));
+        @include should(expect( prepend( $numbers  , 1    ) ), to( equal( 1 2 3 4               ) ));
+        @include should(expect( prepend( $strings  , "a"  ) ), to( equal( "a" "b" "c" "d"       ) ));
+        @include should(expect( prepend( $booleans , true ) ), to( equal( true false false true ) ));
     }
 
     @include it("should prepend a list to a list") {
-        $list-1: 3 4;
-        $list-2: false true;
-        $list-3: "bar" "baz";
+        $numbers  : 3 4;
+        $strings  : "c" "d";
+        $booleans : false true;
 
-        @include should(expect( prepend( $list-1, (1 2)         ) ), to( equal( (1 2 3 4)                 )));
-        //@include should(expect( prepend( $list-2, (true, false)  ) ), to( equal( (true, false, false, true)   )));
-        @include should(expect( prepend( $list-3, ("tal" "foo") ) ), to( equal( ("tal" "foo" "bar" "baz") )));
+        @include should(expect( prepend( $numbers  , ( 1 2        ) ) ), to( equal( 1 2 3 4               ) ));
+        @include should(expect( prepend( $strings  , ( "a" "b"    ) ) ), to( equal( "a" "b" "c" "d"       ) ));
+        @include should(expect( prepend( $booleans , ( true false ) ) ), to( equal( true false false true ) ));
     }
 }

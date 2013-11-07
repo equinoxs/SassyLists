@@ -1,7 +1,7 @@
 @include describe("Random-value") {
 
 	@include it("should return a random value from list") {
-		$list-1: 1 2 3 4 5;
-	    @include should(expect( not not index($list-1, random-value($list-1)) ), to( equal( true )));
+		$list-1 : 1 2 3 4 5;
+	    @include should(expect( not not index( $list-1 , random-value( $list-1 ) ) ), to( equal( true ) ));
 	}
 }

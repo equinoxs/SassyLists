@@ -1,9 +1,11 @@
 @include describe("Remove-Nth") {
-	$list-1: 1 2 3 4 5;
-	$list-2: "a" "b" "c" "d" "e" "f";
+	$numbers: 1 2 3 4 5;
+	$strings: "a" "b" "c" "d" "e" "f";
+	$booleans: true false true true false;
 
 	@include it("should remove value at index") {
-	    @include should(expect( remove-nth($list-1, 1) ), to( equal( 2 3 4 5 )));
-	    @include should(expect( remove-nth($list-2, 5) ), to( equal( "a" "b" "c" "d" "f" )));
+	    @include should(expect( remove-nth( $numbers , 1 ) ), to( equal( 2 3 4 5               ) ));
+	    @include should(expect( remove-nth( $strings , 5 ) ), to( equal( "a" "b" "c" "d" "f"   ) ));
+	    @include should(expect( remove-nth( $booleans , 3 ) ), to( equal( true false true false ) ));
 	}
 }

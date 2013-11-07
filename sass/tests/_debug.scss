@@ -1,18 +1,22 @@
 @include describe("Debug") {
 
-	@include it("should return list as a string") {
-		$list-1: 1 2 3 4 5;
-		$list-2: "a" "b" "c" "d" "e" "f";
+    @include it("should return list as a string") {
+        $numbers  : 1 2 3 4 5;
+        $strings  : "a" "b" "c" "d" "e" "f";
+        $booleans : true false false true true;
 
-	    @include should(expect( debug($list-1) ), to( equal( ("[ 1, 2, 3, 4, 5 ]") )));
-	    @include should(expect( debug($list-2) ), to( equal( ("[ a, b, c, d, e, f ]") )));
-	}
+        @include should(expect( debug($numbers ) ), to( equal( ("[ 1, 2, 3, 4, 5 ]")                  ) ));
+        @include should(expect( debug($strings ) ), to( equal( ("[ a, b, c, d, e, f ]")               ) ));
+        @include should(expect( debug($booleans) ), to( equal( ("[ true, false, false, true, true ]") ) ));
+    }
 
-	@include it("should return nested list as a string") {
-		$list-1: 1 2 (3 4 (5 6));
-		$list-2: ("a" "b" ("c" "d") "e" "f");
+    @include it("should return nested list as a string") {
+        $numbers  : 1 2 (3 4 (5 6));
+        $strings  : ("a" "b" ("c" "d") "e" "f");
+        $booleans : (true false (false true) true false);
 
-	    @include should(expect( debug($list-1) ), to( equal( ("[ 1, 2, [ 3, 4, [ 5, 6 ] ] ]") )));
-	    @include should(expect( debug($list-2) ), to( equal( ("[ a, b, [ c, d ], e, f ]") )));
-	}
+        @include should(expect( debug( $numbers  ) ), to( equal( "[ 1, 2, [ 3, 4, [ 5, 6 ] ] ]"                  ) ));
+        @include should(expect( debug( $strings  ) ), to( equal( "[ a, b, [ c, d ], e, f ]")                     ) ));
+        @include should(expect( debug( $booleans ) ), to( equal( "[ true, false, [ false, true ], true, false ]" ) ));
+    }
 }

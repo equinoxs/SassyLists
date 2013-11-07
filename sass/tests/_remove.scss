@@ -1,33 +1,29 @@
 @include describe("Remove") {
     
     @include it("should return a list without values") {
-        $list-1: 1 2 3 4 5 6;
-        $list-2: "a" "b" "c" "b" "x";
-        $list-3: true false true true false;
-        $list-4: null false null null;
+        $numbers  : 1 2 3 4 5 6;
+        $strings  : "a" "b" "c" "b" "x";
+        $booleans : true false true true false;
 
-        @include should(expect( remove($list-1, 1)     ), to( equal( (2 3 4 5 6)      )));
-        @include should(expect( remove($list-2, "b")   ), to( equal( ("a" "c" "x")    )));
-        @include should(expect( remove($list-3, true)  ), to( equal( (false false)    )));
-        @include should(expect( remove($list-3, false) ), to( equal( (true true true) )));
-        @include should(expect( remove($list-4, false) ), to( equal( (null null null) )));
+        @include should(expect( remove( $numbers  , 1     ) ), to( equal( 2 3 4 5 6      ) ));
+        @include should(expect( remove( $strings  , "b"   ) ), to( equal( "a" "c" "x"    ) ));
+        @include should(expect( remove( $booleans , true  ) ), to( equal( false false    ) ));
+        @include should(expect( remove( $booleans , false ) ), to( equal( true true true ) ));
     }
 
     @include it("should return same list when no equaling values") {
-        $list-1: 1 2 3 4 5 6;
-        $list-2: "a" "b" "c" "b" "x";
-        $list-3: true false true true false;
-        $list-4: null false null null;
+        $numbers  : 1 2 3 4 5 6;
+        $strings  : "a" "b" "c" "b" "x";
+        $booleans : true false true true false;
 
-        @include should(expect( remove($list-1, green) ), to( equal( $list-1 )));
-        @include should(expect( remove($list-2, green) ), to( equal( $list-2 )));
-        @include should(expect( remove($list-3, green) ), to( equal( $list-3 )));
-        @include should(expect( remove($list-4, green) ), to( equal( $list-4 )));
+        @include should(expect( remove( $numbers  , green ) ), to( equal( $numbers  ) ));
+        @include should(expect( remove( $strings  , green ) ), to( equal( $strings  ) ));
+        @include should(expect( remove( $booleans , green ) ), to( equal( $booleans ) ));
     }
 
     @include it("should leave empty lists alone") {
-        $list: ();
+        $list : ();
 
-        @include should(expect( remove($list, green) ), to( equal( $list )));
+        @include should(expect( remove( $list , green ) ), to( equal( $list ) ));
     }
 }

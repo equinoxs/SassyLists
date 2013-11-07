@@ -1,44 +1,44 @@
 @include describe("Is-Symmetrical") {
-	
-	@include it("should return true if list is symmetrical") {
-		$list-1: 1 2 3 2 1;
-		$list-2: true false false true;
-		$list-3: "foo" "bar" "foo";
+    
+    @include it("should return true if list is symmetrical") {
+        $numbers  : 1 2 3 2 1;
+        $strings  : true false false true;
+        $booleans : "foo" "bar" "foo";
 
-		@include should(expect( is-symmetrical($list-1) ), to( be( true )));
-		@include should(expect( is-symmetrical($list-2) ), to( be( true )));
-		@include should(expect( is-symmetrical($list-3) ), to( be( true )));
+        @include should(expect( is-symmetrical( $numbers ) ), to( be( true ) ));
+        @include should(expect( is-symmetrical( $strings ) ), to( be( true ) ));
+        @include should(expect( is-symmetrical( $booleans ) ), to( be( true ) ));
 
-		@include should(expect( is-mirror($list-1) ), to( be( true )));
-		@include should(expect( is-mirror($list-2) ), to( be( true )));
-		@include should(expect( is-mirror($list-3) ), to( be( true )));
-	}
+        @include should(expect( is-mirror( $numbers ) ), to( be( true ) ));
+        @include should(expect( is-mirror( $strings ) ), to( be( true ) ));
+        @include should(expect( is-mirror( $booleans ) ), to( be( true ) ));
+    }
 
-	@include it("should return false if list is not symmetrical") {
-		$list-1: 1 2 3 4 5;
-		$list-2: true false true false;
-		$list-3: "foo" "bar" "baz";
+    @include it("should return false if list is not symmetrical") {
+        $numbers  : 1 2 3 4 5;
+        $strings  : true false true false;
+        $booleans : "foo" "bar" "baz";
 
-		@include should(expect( is-symmetrical($list-1) ), to( be( false )));
-		@include should(expect( is-symmetrical($list-2) ), to( be( false )));
-		@include should(expect( is-symmetrical($list-3) ), to( be( false )));
+        @include should(expect( is-symmetrical( $numbers  ) ), to( be( false ) ));
+        @include should(expect( is-symmetrical( $strings  ) ), to( be( false ) ));
+        @include should(expect( is-symmetrical( $booleans ) ), to( be( false ) ));
 
-		@include should(expect( is-mirror($list-1) ), to( be( false )));
-		@include should(expect( is-mirror($list-2) ), to( be( false )));
-		@include should(expect( is-mirror($list-3) ), to( be( false )));
-	}
+        @include should(expect( is-mirror( $numbers  ) ), to( be( false ) ));
+        @include should(expect( is-mirror( $strings  ) ), to( be( false ) ));
+        @include should(expect( is-mirror( $booleans ) ), to( be( false ) ));
+    }
 
-	@include it("should not be recursive") {
-		$list-1: 1 (2 3 4) 1;
-		$list-2: true (false false) true;
-		$list-3: "foo" ("bar" "baz") "foo";
+    @include it("should not be recursive") {
+        $numbers  : 1 (2 3 4) 1;
+        $strings  : true (false false) true;
+        $booleans : "foo" ("bar" "baz") "foo";
 
-		@include should(expect( is-symmetrical($list-1) ), to( be( true )));
-		@include should(expect( is-symmetrical($list-2) ), to( be( true )));
-		@include should(expect( is-symmetrical($list-3) ), to( be( true )));
+        @include should(expect( is-symmetrical( $numbers  ) ), to( be( true ) ));
+        @include should(expect( is-symmetrical( $strings  ) ), to( be( true ) ));
+        @include should(expect( is-symmetrical( $booleans ) ), to( be( true ) ));
 
-		@include should(expect( is-mirror($list-1) ), to( be( true )));
-		@include should(expect( is-mirror($list-2) ), to( be( true )));
-		@include should(expect( is-mirror($list-3) ), to( be( true )));
-	}
+        @include should(expect( is-mirror( $numbers  ) ), to( be( true ) ));
+        @include should(expect( is-mirror( $strings  ) ), to( be( true ) ));
+        @include should(expect( is-mirror( $booleans ) ), to( be( true ) ));
+    }
 }

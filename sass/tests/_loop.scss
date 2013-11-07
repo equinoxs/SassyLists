@@ -1,10 +1,23 @@
 @include describe("Loop") {
 
 	@include it("should shift indexes from list") {
-		$list-1: 1 2 3 4 5;
-		$list-2: "a" "b" "c" "d" "e" "f";
+		$numbers  : 1 2 3 4;
+		$strings  : "a" "b" "c" "d";
+		$booleans : false true true false;
 	    
-	    @include should(expect( loop($list-1   ) ), to( equal( 5 1 2 3 4 )));
-	    @include should(expect( loop($list-1, 2) ), to( equal( 4 5 1 2 3 )));
+	    @include should(expect( loop( $numbers  , 2 ) ), to( equal( 3 4 1 2               ) ));
+	    @include should(expect( loop( $strings  , 2 ) ), to( equal( "c" "d" "a" "b"       ) ));
+	    @include should(expect( loop( $booleans , 2 ) ), to( equal( true false false true ) ));
 	}
+
+	@include it("should shift indexes from 1 if second parameter is ommited") {
+		$numbers  : 1 2 3 4;
+		$strings  : "a" "b" "c" "d";
+		$booleans : false true true false;
+	    
+	    @include should(expect( loop( $numbers  ) ), to( equal( 4 1 2 3               ) ));
+	    @include should(expect( loop( $strings  ) ), to( equal( "d" "a" "b" "c"       ) ));
+	    @include should(expect( loop( $booleans ) ), to( equal( false false true true ) ));
+	}
+
 }

@@ -1,12 +1,12 @@
 @include describe("Count-values") {
 
-	@include it("should count the number of occurrences of each value in list") {
-		$list-1: 1 2 3 1 4 3 5 2;
-		$list-2: "a" "b" "c" "d" "e" "f";
-		$list-3: true false false;
-		
-	    @include should(expect( count-values($list-1) ), to( equal( ((1 2) (2 2) (3 2) (4 1) (5 1)) )));
-	    @include should(expect( count-values($list-2) ), to( equal( (("a" 1) ("b" 1) ("c" 1) ("d" 1) ("e" 1) ("f" 1)) )));
-	    @include should(expect( count-values($list-3) ), to( equal( ((true 1) (false 2)) )));
-	}
+    @include it("should count the number of occurrences of each value in list") {
+        $numbers  : 1 2 3 1 4 3 5 2;
+        $strings  : "a" "b" "c" "d" "e" "f";
+        $booleans : true false false;
+        
+        @include should(expect( count-values( $numbers )  ), to( equal( (1 2) (2 2) (3 2) (4 1) (5 1)                   ) ));
+        @include should(expect( count-values( $strings )  ), to( equal( ("a" 1) ("b" 1) ("c" 1) ("d" 1) ("e" 1) ("f" 1) ) ));
+        @include should(expect( count-values( $booleans ) ), to( equal( (true 1) (false 2)                              ) ));
+    }
 }

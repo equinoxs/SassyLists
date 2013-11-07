@@ -1,62 +1,62 @@
 @include describe("Replace") {
 
     @include it("should replace a value in a list") {
-        $list-1: 1 2 3 4;
-        $list-2: true false false true;
-        $list-3: "bar" "foo" "bar" "baz";
+        $numbers  : 1 2 3 4;
+        $strings  : "bar" "foo" "bar" "baz";
+        $booleans : true false false true;
 
-        @include should(expect( replace($list-1, 2, 3)         ), to(equal( (1 3 3 4)                 )));
-        @include should(expect( replace($list-2, true, false)  ), to(equal( (false false false false) )));
-        @include should(expect( replace($list-3, "bar", "tah") ), to(equal( ("tah" "foo" "tah" "baz") )));
+        @include should(expect( replace( $numbers  , 2     , 3     ) ), to(equal( 1 3 3 4                 ) ));
+        @include should(expect( replace( $strings  , "bar" , "tah" ) ), to(equal( "tah" "foo" "tah" "baz" ) ));
+        @include should(expect( replace( $booleans , true  , false ) ), to(equal( false false false false ) ));
     }
 
     @include it("should remove a value from a list if no new value is provided") {
-        $list-1: 1 2 3 4;
-        $list-2: true false false true;
-        $list-3: "bar" "foo" "bar" "baz";
+        $numbers  : 1 2 3 4;
+        $strings  : "bar" "foo" "bar" "baz";
+        $booleans : true false false true;
 
-        @include should(expect( replace($list-1, 2, null)     ), to(equal( (1 3 4)   )));
-        @include should(expect( replace($list-2, true, null)  ), to(equal( (false false) )));
-        @include should(expect( replace($list-3, "bar", null) ), to(equal( ("foo" "baz") )));
+        @include should(expect( replace( $numbers  , 2     , null ) ), to(equal( 1 3 4       ) ));
+        @include should(expect( replace( $strings  , "bar" , null ) ), to(equal( "foo" "baz" ) ));
+        @include should(expect( replace( $booleans , true  , null ) ), to(equal( false false ) ));
     }
 
     @include it("should not replace items recursively") {
-        $list-1: 1 2 3 (1 2 3);
-        $list-2: true false (true false);
-        $list-3: "bar" "foo" ("bar" "baz");
+        $numbers  : 1 2 3 (1 2 3);
+        $strings  : "bar" "foo" ("bar" "baz");
+        $booleans : true false (true false);
 
-        @include should(expect( replace($list-1, 2, 3)         ), to(equal( (1 3 3 (1 2 3))           )));
-        @include should(expect( replace($list-2, true, false)  ), to(equal( (false false (true false))  )));
-        @include should(expect( replace($list-3, "bar", "tah") ), to(equal( ("tah" "foo" ("bar" "baz")) )));
+        @include should(expect( replace( $numbers  , 2     , 3     ) ), to(equal( 1 3 3 (1 2 3)             ) ));
+        @include should(expect( replace( $strings  , "bar" , "tah" ) ), to(equal( "tah" "foo" ("bar" "baz") ) ));
+        @include should(expect( replace( $booleans , true  , false ) ), to(equal( false false (true false)  ) ));
     }
 
     @include it("should not remove items recursively") {
-        $list-1: 1 2 3 (1 2 3);
-        $list-2: true false (true false);
-        $list-3: "bar" "foo" ("bar" "baz");
+        $numbers  : 1 2 3 (1 2 3);
+        $strings  : "bar" "foo" ("bar" "baz");
+        $booleans : true false (true false);
 
-        @include should(expect( replace($list-1, 2, null)     ), to(equal( (1 3 (1 2 3))       )));
-        @include should(expect( replace($list-2, true, null)  ), to(equal( (false (true false))  )));
-        @include should(expect( replace($list-3, "bar", null) ), to(equal( ("foo" ("bar" "baz")) )));
+        @include should(expect( replace( $numbers  , 2     , null ) ), to(equal( 1 3 (1 2 3)         ) ));
+        @include should(expect( replace( $strings  , "bar" , null ) ), to(equal( "foo" ("bar" "baz") ) ));
+        @include should(expect( replace( $booleans , true  , null ) ), to(equal( false (true false)  ) ));
     }
 
     @include it("should replace items recursively when told to") {
-        $list-1: 1 2 3 (1 2 3);
-        $list-2: true false (true false);
-        $list-3: "bar" "foo" ("bar" "baz");
+        $numbers  : 1 2 3 (1 2 3);
+        $strings  : "bar" "foo" ("bar" "baz");
+        $booleans : true false (true false);
 
-        @include should(expect( replace($list-1, 2, 3,         $recursive: true) ), to(equal( (1 3 3 (1 3 3))           )));
-        @include should(expect( replace($list-2, true, false,  $recursive: true) ), to(equal( (false false (false false)) )));
-        @include should(expect( replace($list-3, "bar", "tah", $recursive: true) ), to(equal( ("tah" "foo" ("tah" "baz")) )));
+        @include should(expect( replace( $numbers  , 2     , 3     , $recursive: true ) ), to(equal( 1 3 3 (1 3 3)             ) ));
+        @include should(expect( replace( $strings  , "bar" , "tah" , $recursive: true ) ), to(equal( "tah" "foo" ("tah" "baz") ) ));
+        @include should(expect( replace( $booleans , true  , false , $recursive: true ) ), to(equal( false false (false false) ) ));
     }
 
     @include it("should remove items recursively when told to") {
-        $list-1: 1 2 3 (1 2 3);
-        $list-2: true false (true false false);
-        $list-3: "bar" "foo" ("bar" "baz" "tah");
+        $numbers  : 1 2 3 (1 2 3);
+        $strings  : "bar" "foo" ("bar" "baz" "tah");
+        $booleans : true false (true false false);
 
-        @include should(expect( replace($list-1, 2, null,     $recursive: true) ), to(equal( (1 3 (1 3))   )));
-        @include should(expect( replace($list-2, true, null,  $recursive: true) ), to(equal( (false (false false)) )));
-        @include should(expect( replace($list-3, "bar", null, $recursive: true) ), to(equal( ("foo" ("baz" "tah")) )));
+        @include should(expect( replace( $numbers  , 2     , null , $recursive: true ) ), to(equal( 1 3 (1 3)           ) ));
+        @include should(expect( replace( $strings  , "bar" , null , $recursive: true ) ), to(equal( "foo" ("baz" "tah") ) ));
+        @include should(expect( replace( $booleans , true  , null , $recursive: true ) ), to(equal( false (false false) ) ));
     }
 }

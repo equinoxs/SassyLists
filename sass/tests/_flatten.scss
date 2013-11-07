@@ -1,26 +1,47 @@
 @include describe("Flatten") {
 
     @include it("should flatten nested arrays") {
-        $list-1: 1 (2  3  4 5   6) 7; // 2 deep
-        $list-2: 1 (2 (3  4 5)  6) 7; // 3 deep
-        $list-3: 1 (2 (3 (4 5)) 6) 7; // 4 deep
+        $numbers-1 : 1 (2  3  4 5   6) 7; // 2 deep
+        $numbers-2 : 1 (2 (3  4 5)  6) 7; // 3 deep
+        $numbers-3 : 1 (2 (3 (4 5)) 6) 7; // 4 deep
+        $numbers-result: 1 2 3 4 5 6 7;
 
-        $result: 1 2 3 4 5 6 7;
+        $strings-1 : "a" ("b"  "c"  "d" "e"   "f") "g"; // 2 deep
+        $strings-2 : "a" ("b" ("c"  "d" "e")  "f") "g"; // 3 deep
+        $strings-3 : "a" ("b" ("c" ("d" "e")) "f") "g"; // 4 deep
+        $strings-result: "a" "b" "c" "d" "e" "f" "g";
 
-        @include should(expect( flatten($list-1) ), to( equal( $result )));
-        @include should(expect( flatten($list-2) ), to( equal( $result )));
-        @include should(expect( flatten($list-3) ), to( equal( $result )));
+        $booleans-1 : true (false  true  false true   false) true; // 2 deep
+        $booleans-2 : true (false (true  false true)  false) true; // 3 deep
+        $booleans-3 : true (false (true (false true)) false) true; // 4 deep
+        $booleans-result: true false true false true false true;
+
+        @include should(expect( flatten( $numbers-1  ) ), to( equal( $numbers-result  ) ));
+        @include should(expect( flatten( $numbers-2  ) ), to( equal( $numbers-result  ) ));
+        @include should(expect( flatten( $numbers-3  ) ), to( equal( $numbers-result  ) ));
+
+        @include should(expect( flatten( $strings-1  ) ), to( equal( $strings-result  ) ));
+        @include should(expect( flatten( $strings-2  ) ), to( equal( $strings-result  ) ));
+        @include should(expect( flatten( $strings-3  ) ), to( equal( $strings-result  ) ));
+
+        @include should(expect( flatten( $booleans-1 ) ), to( equal( $booleans-result ) ));
+        @include should(expect( flatten( $booleans-2 ) ), to( equal( $booleans-result ) ));
+        @include should(expect( flatten( $booleans-3 ) ), to( equal( $booleans-result ) ));
     }
 
     @include it("should leave normal arrays alone") {
-        $list: 1 2 3 4 5 6 7;
+        $numbers  : 1 2 3 4 5 6 7;
+        $strings  : "a" "b" "c" "d" "e" "f" "g";
+        $booleans : true false true false true false true;
 
-        @include should(expect( flatten($list) ), to( equal( $list )));
+        @include should(expect( flatten( $numbers  ) ), to( equal( $numbers  ) ));
+        @include should(expect( flatten( $strings  ) ), to( equal( $strings  ) ));
+        @include should(expect( flatten( $booleans ) ), to( equal( $booleans ) ));
     }
 
     @include it("should leave empty lists alone") {
-        $list: ();
+        $list : ();
 
-        @include should(expect( flatten($list) ), to( equal( $list )));
+        @include should(expect( flatten( $list ) ), to( equal( $list ) ));
     }
 }

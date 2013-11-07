@@ -1,12 +1,23 @@
 @include describe("Remove-Duplicates") {
-	$list-1: 1 2 3 2 4 1 5;
-	$list-2: "a" "b" "c" "d" "e" "f";
+	
 
 	@include it("should remove duplicated values from list") {
-	    @include should(expect( remove-duplicates($list-1) ), to( equal( 1 2 3 4 5 )));
+		$numbers  : 1 2 3 2 4 1 5;
+		$strings  : "a" "b" "a" "c" "c" "d" "b" "e" "f";
+		$booleans : true false false true true;
+
+	    @include should(expect( remove-duplicates( $numbers  ) ), to( equal( 1 2 3 4 5               ) ));
+	    @include should(expect( remove-duplicates( $strings  ) ), to( equal( "a" "b" "c" "d" "e" "f" ) ));
+	    @include should(expect( remove-duplicates( $booleans ) ), to( equal( true false              ) ));
 	}
 
 	@include it("should leave a list without duplicated values alone") {
-	    @include should(expect( remove-duplicates($list-2) ), to( equal( "a" "b" "c" "d" "e" "f" )));
+		$numbers  : 1 2 3 4 5;
+		$strings  : "a" "b" "c" "d" "e" "f";
+		$booleans : true false;
+
+	    @include should(expect( remove-duplicates( $numbers  ) ), to( equal( $numbers  ) ));
+	    @include should(expect( remove-duplicates( $strings  ) ), to( equal( $strings  ) ));
+	    @include should(expect( remove-duplicates( $booleans ) ), to( equal( $booleans ) ));
 	}
 }

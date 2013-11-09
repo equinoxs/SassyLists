@@ -1,22 +1,19 @@
 @include describe("Insert-Nth") {
+    
+    $numbers  : 1 2 3 4;
+    $strings  : "a" "b" "c" "d";
+    $booleans : false true true false;
 
     @include it("should insert value at index") {
-        $numbers  : 1 2 3 4;
-        $strings  : "a" "b" "c" "d";
-        $booleans : false true true false;
-        
         @include should(expect( insert-nth( $numbers,  2,    3 ) ), to( equal( 1 3 2 3 4                  ) ));
         @include should(expect( insert-nth( $strings,  3,  "e" ) ), to( equal( "a" "b" "e" "c" "d"        ) ));
         @include should(expect( insert-nth( $booleans, 4, true ) ), to( equal( false true true true false ) ));
     }
 
     @include it("should return false when inserting value at undefined index") {
-        $numbers  : 1 2 3 4;
-        $strings  : "a" "b" "c" "d";
-        $booleans : false true true false;
-        
         @include should(expect( insert-nth( $numbers, 10, "hey" ) ), to( equal( false ) ));
         @include should(expect( insert-nth( $strings, -1, "hey" ) ), to( equal( false ) ));
         @include should(expect( insert-nth( $booleans, 0, "hey" ) ), to( equal( false ) ));
     }
+
 }

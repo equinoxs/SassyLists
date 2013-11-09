@@ -2,21 +2,22 @@
     
     @include it("should return the first item in an array") {
         $numbers  : 1 2 3;
-        $strings  : "foo" "bar" "baz";
+        $strings  : "a" "b" "c";
         $booleans : true false false;
 
         @include should(expect( first( $numbers  ) ), to( equal( 1     ) ));
-        @include should(expect( first( $strings  ) ), to( equal( "foo" ) ));
+        @include should(expect( first( $strings  ) ), to( equal( "a" ) ));
         @include should(expect( first( $booleans ) ), to( equal( true  ) ));
     }
 
     @include it("should return the only item in an single item array") {
         $number  : 1;
-        $string  : "foo";
+        $string  : "a";
         $boolean : true;
 
         @include should(expect( first( $number  ) ), to( equal( 1     ) ));
-        @include should(expect( first( $string  ) ), to( equal( "foo" ) ));
+        @include should(expect( first( $string  ) ), to( equal( "a" ) ));
         @include should(expect( first( $boolean ) ), to( equal( true  ) ));
     }
+    
 }

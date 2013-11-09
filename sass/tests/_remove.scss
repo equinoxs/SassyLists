@@ -1,10 +1,11 @@
 @include describe("Remove") {
-    
-    @include it("should return a list without values") {
-        $numbers  : 1 2 3 4 5 6;
-        $strings  : "a" "b" "c" "b" "x";
-        $booleans : true false true true false;
 
+    $list     : ();
+    $numbers  : 1 2 3 4 5 6;
+    $strings  : "a" "b" "c" "b" "x";
+    $booleans : true false true true false;
+
+    @include it("should return a list without values") {
         @include should(expect( remove( $numbers  , 1     ) ), to( equal( 2 3 4 5 6      ) ));
         @include should(expect( remove( $strings  , "b"   ) ), to( equal( "a" "c" "x"    ) ));
         @include should(expect( remove( $booleans , true  ) ), to( equal( false false    ) ));
@@ -12,18 +13,13 @@
     }
 
     @include it("should return same list when no equaling values") {
-        $numbers  : 1 2 3 4 5 6;
-        $strings  : "a" "b" "c" "b" "x";
-        $booleans : true false true true false;
-
         @include should(expect( remove( $numbers  , green ) ), to( equal( $numbers  ) ));
         @include should(expect( remove( $strings  , green ) ), to( equal( $strings  ) ));
         @include should(expect( remove( $booleans , green ) ), to( equal( $booleans ) ));
     }
 
     @include it("should leave empty lists alone") {
-        $list : ();
-
         @include should(expect( remove( $list , green ) ), to( equal( $list ) ));
     }
+    
 }

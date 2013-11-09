@@ -10,7 +10,7 @@ Chunk should explode list into several lists {
 Chunk should return initial list if size is equal or greater than the length of list {
   ✗: Expected 1 2 3 4 5 "list" to equal 1 2 3 4 5 "list";
   ✗: Expected "a" "b" "c" "d" "e" "f" "list" to equal "a" "b" "c" "d" "e" "f" "list";
-  ✗: Expected true false true true false "list" to equal "a" "b" "c" "d" "e" "f" "list";
+  ✗: Expected true false true true "list" to equal true false true true "list";
   Test: Failed;
 }
 
@@ -27,17 +27,17 @@ Debug should return nested list as a string {
 }
 
 /* line 7, ../sass/bootcamp/dist/core/mixins/_it.scss */
-Sort should sort unitless numeric values in list {
-  ✗: Expected a "string" to be null "string";
+To-String should return list as a string using glue {
+  ✗: Expected true false false true true  "string" to equal true false false true true "string";
   Test: Failed;
 }
 
 /* line 11, ../sass/bootcamp/dist/core/mixins/_runner.scss */
 Test Results {
   Passed: false;
-  Checklist:  ✗ ✗ ✔ ✔ ✔ ✗ ✗ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✗ ✔ ✔ ✔ ✔;
-  Tests: 57;
-  Assertions: 174;
+  Checklist:  ✗ ✗ ✔ ✔ ✔ ✗ ✗ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✗ ✔;
+  Tests: 56;
+  Assertions: 182;
   Failures: 5;
   Skipped: 0;
 }

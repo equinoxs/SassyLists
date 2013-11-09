@@ -4,8 +4,8 @@
 	$list-3 : "a" "b" "c" "d" "e" "f";
 
 	@include it("should sort unitless numeric values in list") {
-	    @include should(expect( sort($list-1) ), to( equal( 1 2 3 4 5 6 )));
-	    @include should(expect( sort($list-2) ), to( equal( 1 2 3       )));
-	    @include should(expect( sort($list-3) ), to( be-null() 		  ));
+	    @include should(expect( sort($list-1) ), to(   equal( 1 2 3 4 5 6 ) ));
+	    @include should(expect( sort($list-2) ), to(   equal( 1 2 3       ) ));
+	    @include should(expect( sort($list-3) ), to( be-null(             ) ));
 	}
 }

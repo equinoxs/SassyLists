@@ -1,22 +1,19 @@
 @include describe("Chunk") {
     
-    @include it("should explode list into several lists") {
-        $numbers  : 1 2 3 4 5;
-        $strings  : "a" "b" "c" "d" "e" "f";
-        $booleans : true false true true;
+    $numbers  : 1 2 3 4 5;
+    $strings  : "a" "b" "c" "d" "e" "f";
+    $booleans : true false true true;
 
+    @include it("should explode list into several lists") {
         @include should(expect( chunk( $numbers,  2 ) ), to( equal( (1 2) (3 4) (5)             ) ));
         @include should(expect( chunk( $strings,  3 ) ), to( equal( ("a" "b" "c") ("d" "e" "f") ) ));
         @include should(expect( chunk( $booleans, 2 ) ), to( equal( (true false) (true true)    ) ));
     }
 
     @include it("should return initial list if size is equal or greater than the length of list") {
-        $numbers  : 1 2 3 4 5;
-        $strings  : "a" "b" "c" "d" "e" "f";
-        $booleans : true false true true false;
-
-        @include should(expect( chunk( $numbers,  5 ) ), to( equal( (1 2 3 4 5)                         ) ));
-        @include should(expect( chunk( $strings,  7 ) ), to( equal( ("a") ("b") ("c") ("d") ("e") ("f") ) ));
-        @include should(expect( chunk( $booleans, 0 ) ), to( equal( ( false )                           ) ));
+        @include should(expect( chunk( $numbers,  6 ) ), to( equal( $numbers  ) ));
+        @include should(expect( chunk( $strings,  7 ) ), to( equal( $strings  ) ));
+        @include should(expect( chunk( $booleans, 5 ) ), to( equal( $booleans ) ));
     }
+
 }

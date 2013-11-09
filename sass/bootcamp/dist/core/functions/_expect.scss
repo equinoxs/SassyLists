@@ -1,5 +1,5 @@
 @function expect($this) {
-  $bootcamp-should-a-text: "Expected";
-  $bootcamp-should-a-value: $this;
+  $bootcamp-should-a-text: "Expected" !global;
+  $bootcamp-should-a-value: $this !global;
   @return null;
 }

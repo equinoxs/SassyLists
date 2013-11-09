@@ -19,4 +19,5 @@
         @include should(expect( last( $strings  ) ), to( equal( "foo" ) ));
         @include should(expect( last( $booleans ) ), to( equal( true  ) ));
     }
+    
 }

@@ -1,10 +1,10 @@
 @include describe("Contain") {
     
+    $numbers  : 1 2 3;
+    $strings  : "foo" "bar" "baz";
+    $booleans : true false false;
+    
     @include it("should be true if collection contains value") {
-        $numbers  :  1 2 3;
-        $strings  :  "foo" "bar" "baz";
-        $booleans : true false false;
-
         @include should(expect( contain( $numbers,  1     ) ), to( be( true ) ));
         @include should(expect( contain( $strings,  "foo" ) ), to( be( true ) ));
         @include should(expect( contain( $booleans, false ) ), to( be( true ) ));
@@ -15,10 +15,6 @@
     }
 
     @include it("should be false if collection doesnt contain value") {
-        $numbers  :  1 2 3;
-        $strings  :  "foo" "bar" "baz";
-        $booleans : true false false;
-
         @include should(expect( contain( $numbers,  4     ) ), to( be( false ) ));
         @include should(expect( contain( $strings,  "fod" ) ), to( be( false ) ));
         @include should(expect( contain( $booleans, null  ) ), to( be( false ) ));
@@ -27,4 +23,5 @@
         @include should(expect( include( $strings,  "fod" ) ), to( be( false ) ));
         @include should(expect( include( $booleans, null  ) ), to( be( false ) ));
     }
+
 }

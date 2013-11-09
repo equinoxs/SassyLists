@@ -2,7 +2,7 @@
     
     $numbers  : 1 2 3 4 5;
     $strings  : "a" "b" "c" "d" "e" "f";
-    $booleans : true false true true;
+    $booleans : true false true true; 
 
     @include it("should explode list into several lists") {
         @include should(expect( chunk( $numbers,  2 ) ), to( equal( (1 2) (3 4) (5)             ) ));

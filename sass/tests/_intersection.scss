@@ -1,0 +1,38 @@
+@include describe("Intersection") {
+    
+    @include it("should return a list of shared values across all given lists") {
+        $numbers-1  : 1 2 3;
+        $numbers-2  : 2 4 1;
+        $numbers-3  : 6 2 1;
+
+        $strings-1  : "a" "b" "c";
+        $strings-2  : "b" "d" "c";
+        $strings-3  : "a" "c" "b";
+
+        $booleans-1 : true false false;
+        $booleans-2 : true null false;
+        $booleans-3 : null null true;
+
+        @include should(expect( intersection( $numbers-1  ,  $numbers-2  ,  $numbers-3  ) ), to( equal( 1 2  ) ));
+        @include should(expect( intersection( $strings-1  ,  $strings-2  ,  $strings-3  ) ), to( equal( "b"  ) ));
+        @include should(expect( intersection( $booleans-1 ,  $booleans-2 ,  $booleans-3 ) ), to( equal( true ) ));
+    }
+
+    @include it("should return an empty list if there is no shared values") {
+        $numbers-1  : 1 2 3;
+        $numbers-2  : 2 4 5;
+        $numbers-3  : 6 4 1;
+
+        $strings-1  : "a" "d" "c";
+        $strings-2  : "b" "d" "e";
+        $strings-3  : "a" "c" "b";
+
+        $booleans-1 : true false false;
+        $booleans-2 : false null false;
+        $booleans-3 : null null true;
+
+        @include should(expect( intersection( $numbers-1  ,  $numbers-2  ,  $numbers-3  ) ), to( equal( () ) ));
+        @include should(expect( intersection( $strings-1  ,  $strings-2  ,  $strings-3  ) ), to( equal( () ) ));
+        @include should(expect( intersection( $booleans-1 ,  $booleans-2 ,  $booleans-3 ) ), to( equal( () ) ));
+    }
+}

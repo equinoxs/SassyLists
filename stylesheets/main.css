@@ -1,12 +1,34 @@
 @charset "CP850";
 /* >> Bootcamp >> */
+/* line 7, ../sass/bootcamp/dist/core/mixins/_it.scss */
+Intersection should return an empty list if there is no shared values {
+  ✗: Expected  "list" to be empty "string";
+  Test: Failed;
+}
+
+/* line 7, ../sass/bootcamp/dist/core/mixins/_it.scss */
+Intersection should return one item if all the items are the same {
+  ✗: Expected 1 1 1 "arglist" to equal 1 "number";
+  ✗: Expected "a" "a" "a" "arglist" to equal a "string";
+  ✗: Expected false false false "arglist" to equal false "bool";
+  Test: Failed;
+}
+
+/* line 7, ../sass/bootcamp/dist/core/mixins/_it.scss */
+Intersection should leave empty arrays alone {
+  ✗: Expected  "arglist" to be empty "string";
+  ✗: Expected  "arglist" to be empty "string";
+  ✗: Expected  "arglist" to be empty "string";
+  Test: Failed;
+}
+
 /* line 11, ../sass/bootcamp/dist/core/mixins/_runner.scss */
 Test Results {
-  Passed: true;
-  Checklist:  ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔;
-  Tests: 58;
-  Assertions: 188;
-  Failures: 0;
+  Passed: false;
+  Checklist:  ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✗ ✗ ✗ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔;
+  Tests: 60;
+  Assertions: 194;
+  Failures: 3;
   Skipped: 0;
 }
 

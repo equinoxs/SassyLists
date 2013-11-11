@@ -31,8 +31,21 @@
         $booleans-2 : false null false;
         $booleans-3 : null null true;
 
-        @include should(expect( intersection( $numbers-1  ,  $numbers-2  ,  $numbers-3  ) ), to( equal( () ) ));
-        @include should(expect( intersection( $strings-1  ,  $strings-2  ,  $strings-3  ) ), to( equal( () ) ));
-        @include should(expect( intersection( $booleans-1 ,  $booleans-2 ,  $booleans-3 ) ), to( equal( () ) ));
+        @include should(expect( intersection( $numbers-1  ,  $numbers-2  ,  $numbers-3  ) ), to( be-empty() ));
+        @include should(expect( intersection( $strings-1  ,  $strings-2  ,  $strings-3  ) ), to( be-empty() ));
+        @include should(expect( intersection( $booleans-1 ,  $booleans-2 ,  $booleans-3 ) ), to( be-empty() ));
     }
+
+    @include it("should return one item if all the items are the same") {
+        @include should(expect( intersection(1     1     1    ) ), to( equal( 1     ) ));
+        @include should(expect( intersection("a"   "a"   "a"  ) ), to( equal( "a"   ) ));
+        @include should(expect( intersection(false false false) ), to( equal( false ) ));
+    }
+
+    @include it("should leave empty arrays alone") {
+        @include should(expect( intersection( () )), to( be-empty() ));
+        @include should(expect( intersection( () )), to( be-empty() ));
+        @include should(expect( intersection( () )), to( be-empty() ));
+    }
+
 }
